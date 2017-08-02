@@ -1,0 +1,44 @@
+<p>
+  servers works!
+</p>
+<!--<input type="text" (input)="onUpdateServerName($event)"/>-->
+<input type="text" [(ngModel)]="serverName">
+<button class="btn-primary btn" [disabled]="addServer" (click)="serverCreated()">Add Server</button>
+<br/>
+{{serverName}}
+<app-server *ngFor="let testServer of testServers"></app-server>
+<div *ngIf="created; else noServer">
+  Server : {{serverCreationStatus}}
+</div>
+<ng-template #noServer>
+  <p>No Server Created</p>
+</ng-template>
+
+<div>
+  <h3>Assignment</h3>
+  <div>
+    <input type="text" [(ngModel)]="userName">
+    <br/>
+    {{userName}}
+    <button
+      [disabled]="userName.length < 1"
+      (click)="userName=''"
+      class="btn btn-primary"
+    >
+      Clear Input
+    </button>
+  </div>
+</div>
+
+<div>
+  <h3>Assignment</h3>
+  <div>
+    <button class="btn btn-primary" (click)="btnClick()">Show Paragraph</button>
+    <div *ngIf="pass">
+      Passphrase = Lion is pussy.
+    </div>
+    <div *ngFor="let listItem of list; let i = index;" [ngClass]="{'change-color': i>=5}">
+      {{listItem}}
+    </div>
+  </div>
+</div>
